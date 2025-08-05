@@ -92,9 +92,13 @@ entradaDeDados.question('Digite o nome do aluno: ', function(nome){
                         console.log('ERRO:  É obrigatório o preenchimento de todos as informações ')
                     }else if(!isNaN(nomeAluno)){
                         console.log('ERRO: Dados inválidos. No campo de nome só podem ser digitados apenas números')
-                    }else if(isNaN(nota1)||isNaN(nota2)||isNaN(nota3)||isNaN(nota4)){
+                    }else if( isNaN(nota1)||isNaN(nota2)||isNaN(nota3)||isNaN(nota4)){
                         console.log('ERRO: Dados inválidos. No campo de notas só podem ser digitados apenas números')
-                    }else if(Number(nota1) < 0 || Number(nota1) > 10 ||Number(nota2) < 0 ||Number(nota2) > 10 || Number(nota3) < 0 ||Number(nota3) > 10 ||Number(nota4) < 0 ||Number(nota4) > 10){
+                    }else if( Number(nota1) < 0 || Number(nota1) > 10 ||
+                              Number(nota2) < 0 || Number(nota2) > 10 || 
+                              Number(nota3) < 0 || Number(nota3) > 10 ||
+                              Number(nota4) < 0 || Number(nota4) > 10
+                            ){
                         console.log('ERRO: Dados inválidos. Você deve entrar com valores entre 0 e 10')
                     } else {
                         let media = (Number(nota1) + Number(nota2) + Number(nota3) + Number(nota4))/4
