@@ -111,7 +111,7 @@ entradaDeDados.question('Digite o nome do aluno: ', function(nome){
                             ){
                         console.log(MESSAGE_ERROR_OUT_OF_RANGE)
                     } else {
-                        let media = (Number(nota1) + Number(nota2) + Number(nota3) + Number(nota4))/4
+
 
                         let statusAluno
                         if(media >= 7 && media <= 10){
