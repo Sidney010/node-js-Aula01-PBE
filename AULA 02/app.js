@@ -5,6 +5,11 @@
  * Data: 01/08/2025
  * Versão: 1.0
  ************************************************************************/
+const MESSAGE_ERROR_EMPTY = 'ERRO:  É obrigatório o preenchimento de todos as informações '
+const MESSAGE_ERROR_OUT_OF_RANGE = 'ERRO: Dados inválidos. Você deve entrar com valores entre 0 e 10'
+const MESSAGE_ERROR_NAN = 'ERRO: Dados inválidos. No campo de notas só podem ser digitados apenas números'
+const MESSAGE_ERROR_NOT_LETTER = 'ERRO: Dados inválidos. No campo de nome só podem ser digitados apenas números'
+
 
 /**
  * Formas de criar um variável
@@ -87,19 +92,24 @@ entradaDeDados.question('Digite o nome do aluno: ', function(nome){
                     let nota4 = valor4 
 
                     isNaN
-
+                    
+                    // Validação
                     if(nomeAluno == '' || nota1 == '' || nota2 == '' || nota3 == '' || nota4 == '' ){
-                        console.log('ERRO:  É obrigatório o preenchimento de todos as informações ')
+                        console.log(MESSAGE_ERROR_EMPTY)
+                  
+                    // Validação para bloquear a entrada de números
                     }else if(!isNaN(nomeAluno)){
-                        console.log('ERRO: Dados inválidos. No campo de nome só podem ser digitados apenas números')
+                        console.log(MESSAGE_ERROR_NOT_LETTER)
+                    
+                    // Validação para bloquear a entrada de letras
                     }else if( isNaN(nota1)||isNaN(nota2)||isNaN(nota3)||isNaN(nota4)){
-                        console.log('ERRO: Dados inválidos. No campo de notas só podem ser digitados apenas números')
+                        console.log(MESSAGE_ERROR_NAN)
                     }else if( Number(nota1) < 0 || Number(nota1) > 10 ||
                               Number(nota2) < 0 || Number(nota2) > 10 || 
                               Number(nota3) < 0 || Number(nota3) > 10 ||
                               Number(nota4) < 0 || Number(nota4) > 10
                             ){
-                        console.log('ERRO: Dados inválidos. Você deve entrar com valores entre 0 e 10')
+                        console.log(MESSAGE_ERROR_OUT_OF_RANGE)
                     } else {
                         let media = (Number(nota1) + Number(nota2) + Number(nota3) + Number(nota4))/4
 
