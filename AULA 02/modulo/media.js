@@ -4,6 +4,8 @@
  * Data: 05/08/2025
  * Versão: 1.0
  ************************************************************************/
+
+
 //Função para calcular a média escolar
 function calcularMedia(valor1, valor2, valor3, valor4) {
     let nota1 = Number(valor1)
@@ -16,16 +18,34 @@ function calcularMedia(valor1, valor2, valor3, valor4) {
 
 }
 
-function verificarStatusAluno(media){
+//Função para retorna o status da média escolar (APROVADO, EXAME, REPROVADO)
+function validarStatusMedia(valorMedia){
+    let media = Number(valorMedia)
+
     let statusAluno
     if(media >= 7 && media <= 10){
         statusAluno = 'APROVADO'
     }else if(media < 7 && media >= 5){
         statusAluno = 'EXAME'
-    }else if (media < 5 && media > 0){
+    }else if (media < 5 && media >= 0){
         statusAluno = 'REPROVADO'
     }
-    return statusAluno
+
+    if(statusAluno != undefined){
+        return statusAluno
+    }else{
+        return false
+    }
 
 }
-console.log(verificarStatusAluno('9.1'))
+
+//let mediaAluno = calcularMedia('8','6','9.6','8.9')
+//console.log(mediaAluno)
+//console.log(validarStatusMedia(mediaAluno))
+
+
+//Permite tornar public uma função, variavel, constante, objeto
+module.exports = {
+    calcularMedia,
+    validarStatusMedia
+}

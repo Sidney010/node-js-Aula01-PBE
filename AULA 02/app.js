@@ -10,6 +10,8 @@ const MESSAGE_ERROR_OUT_OF_RANGE = 'ERRO: Dados inválidos. Você deve entrar co
 const MESSAGE_ERROR_NAN = 'ERRO: Dados inválidos. No campo de notas só podem ser digitados apenas números'
 const MESSAGE_ERROR_NOT_LETTER = 'ERRO: Dados inválidos. No campo de nome só podem ser digitados apenas números'
 
+//Import da biblioteca para calcular  as médias escolares
+const mediaEscolar = require('./modulo/media.js')
 
 /**
  * Formas de criar um variável
@@ -91,7 +93,6 @@ entradaDeDados.question('Digite o nome do aluno: ', function(nome){
                 entradaDeDados.question('Digite a nota4: ', function(valor4){
                     let nota4 = valor4 
 
-                    isNaN
                     
                     // Validação
                     if(nomeAluno == '' || nota1 == '' || nota2 == '' || nota3 == '' || nota4 == '' ){
@@ -111,17 +112,18 @@ entradaDeDados.question('Digite o nome do aluno: ', function(nome){
                             ){
                         console.log(MESSAGE_ERROR_OUT_OF_RANGE)
                     } else {
+                        
+                        //Chama a função para calcular a média
+                        let media = mediaEscolar.calcularMedia(nota1, nota2, nota3, nota4)
+                        
+                        //Chama a função para retornar o status da média
+                        let statusAluno = mediaEscolar.validarStatusMedia(media)
 
-
-                        let statusAluno
-                        if(media >= 7 && media <= 10){
-                            statusAluno = 'APROVADO'
-                        }else if(media < 7 && media >= 5){
-                            statusAluno = 'EXAME'
-                        }else if (media < 5 && media > 0){
-                            statusAluno = 'REPROVADO'
+                        if(statusAluno){
+                            console.log(`O aluno(a) ${nomeAluno} teve a média ${media} e esta ${statusAluno}`)
                         }
-                        console.log(`O aluno(a) ${nomeAluno} teve a média ${media.toFixed(1)} e esta ${statusAluno}`)
+  
+
                     }
                 })//Fecha a entrada nota4
             })//Fecha a entrada nota3
